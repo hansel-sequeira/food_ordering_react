@@ -1,0 +1,19 @@
+{
+  "name": "foody_delivery_react",
+  "version": "1.0.0",
+  "description": "Food Ordering App using React",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Hansel Sequeira",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.10.0",
+    "process": "^0.11.10"
+  }
+}

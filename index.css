@@ -1,0 +1,29 @@
+.logo {
+    height: 155px;
+    width: 195px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.navbar {
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+.navbar>ul {
+    display: flex;
+}
+
+.navbar-list {
+    list-style-type: none;
+}
+
+.navbar-list>li {
+    font-size: 20px;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
