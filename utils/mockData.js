@@ -1,8 +1,4 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import logo from "./assets/logo.jpeg"
-
-const gridElements = {
+export const gridElements = {
     "restaurants": [
         {
             "info": {
@@ -2879,65 +2875,3 @@ const gridElements = {
         }
     ]
 }
-
-
-const Header = () => {
-    return (
-        <div className="header">
-            <div className="logoContainer">
-                <img src={logo} className="logo"></img>
-            </div>
-            <div className="navbar">
-                <ul className="navbar-list">
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-const Card = (props) => {
-    const { name, avgRating, cuisines, sla, cloudinaryImageId } = props.element
-    return (
-        <div className="card">
-            <img className="card-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-                cloudinaryImageId}></img>
-            <div className="card-content">
-                <h2>{name}</h2>
-                <h3>{cuisines.join(", ")}</h3>
-                <h4>{avgRating} stars</h4>
-                <h4>{sla.deliveryTime} mins away</h4>
-            </div>
-        </div>
-    )
-}
-
-const Body = () => {
-    return (
-        <div className="body-div">
-            <div className="search-bar">
-                Search Bar
-            </div>
-            <div className="card-container">
-                {gridElements.restaurants.map(restaurant => <Card key={restaurant.info.id} element={restaurant.info} />)}
-            </div>
-        </div>
-    )
-}
-
-
-const AppContent = () => {
-    return (
-        <div>
-            <Header />
-            <Body />
-        </div>
-    )
-}
-
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppContent />);
