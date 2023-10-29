@@ -92,3 +92,16 @@ h4 {
     flex-direction: row;
     padding-left: 10px;
 }
+
+.filter-btn {
+    margin: 10px;
+}
+
+.filter-btn button {
+    padding: 5px;
+    border-radius: 5%;
+}
+
+.filter-btn button:hover {
+    cursor: pointer;
+}
