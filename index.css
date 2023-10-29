@@ -52,6 +52,7 @@
     padding: 5px 5px 0px 5px;
     margin: 10px 5px;
     width: 350px;
+    height: 425px;
     align-items: center;
     background-color: aliceblue;
     justify-content: space-around;
@@ -104,4 +105,42 @@ h4 {
 
 .filter-btn button:hover {
     cursor: pointer;
+}
+
+.filter-div {
+    display: flex;
+    align-items: center;
+}
+
+.search-field {
+    margin: 5px 15px 5px 5px;
+}
+
+.search-field input {
+    margin: 5px;
+}
+
+.search-field button {
+    padding: 3px;
+}
+
+.login-btn {
+    padding: 3px;
+    border-radius: 10%;
+}
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0px 5px;
+}
+
+.shimmer-card {
+    padding: 5px 5px 0px 5px;
+    margin: 10px 5px;
+    width: 350px;
+    height: 425px;
+    align-items: center;
+    background-color: aliceblue;
 }
