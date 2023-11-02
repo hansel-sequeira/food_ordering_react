@@ -1,21 +1,13 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { RESTAURANT_DETAIL_URL, RESTAURANT_MENU_IMAGE_URL } from "../../utils/constants";
 import ShimmerContent from "./ShimmerContent";
+import useRestaurantInfo from "../../utils/useRestaurantInfo";
+import { RESTAURANT_MENU_IMAGE_URL } from "../../utils/constants";
 
 const RestaurantDetail = () => {
 
-    const [resData, setResData] = useState(null);
     const { resId } = useParams();
-    useEffect(() => {
-        fetchRestaurantDetail();
-    }, []);
 
-    const fetchRestaurantDetail = async () => {
-        const response = await fetch(RESTAURANT_DETAIL_URL + resId);
-        const json = await response.json();
-        setResData(json);
-    }
+    const resData = useRestaurantInfo(resId);
 
     const basicInfo = resData?.data?.cards[0]?.card?.card?.info;
 
@@ -24,7 +16,6 @@ const RestaurantDetail = () => {
     }
     return (
         <div>
-
             <div>
                 <h2>{basicInfo.name}</h2>
                 <h4>{basicInfo.cuisines.join(", ")}</h4>
