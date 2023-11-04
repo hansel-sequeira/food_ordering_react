@@ -15,9 +15,9 @@ const RestaurantDetail = () => {
         return (<ShimmerContent />)
     }
     return (
-        <div>
-            <div>
-                <h2>{basicInfo.name}</h2>
+        <div className="flex flex-col items-center mt-10">
+            <div className="text-center mb-10">
+                <h2 className="font-bold mb-2">{basicInfo.name}</h2>
                 <h4>{basicInfo.cuisines.join(", ")}</h4>
                 <h4>{basicInfo.areaName}, {basicInfo.sla.lastMileTravelString}</h4>
                 <h5>{basicInfo.avgRatingString} stars | {basicInfo.totalRatingsString}</h5>
@@ -27,9 +27,9 @@ const RestaurantDetail = () => {
 
                 {resData.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards.map(itemCard => {
                     return (
-                        <div key={itemCard.card.info.id}>
+                        <div className="flex flex-col items-center my-8" key={itemCard.card.info.id}>
                             {itemCard.card.info.name}
-                            <img src={RESTAURANT_MENU_IMAGE_URL + itemCard.card.info.imageId}></img>
+                            <img className="mt-2" src={RESTAURANT_MENU_IMAGE_URL + itemCard.card.info.imageId}></img>
                         </div>
                     )
                 })}

@@ -32,15 +32,16 @@ const Body = () => {
 
     return (
         <div className="body-div">
-            <div className="filter-div">
 
-                <div className="search-field">
-                    <input ref={searchFieldRef} type="text"></input>
-                    <button onClick={handleSearchFieldClick}>Search</button>
+            <div className="flex ml-9 mt-8 mb-4 items-center">
+
+                <div className="mx-2">
+                    <input ref={searchFieldRef} type="text" className="border border-black mx-3 px-2"></input>
+                    <button className="bg-green-300 p-1 rounded-md hover:bg-green-400" onClick={handleSearchFieldClick}>Search</button>
                 </div>
 
-                <div className="filter-btn">
-                    <button onClick={() => {
+                <div className="mr-3 mx-20">
+                    <button className="bg-cyan-100 p-1 rounded-md hover:bg-cyan-200" onClick={() => {
                         setElements(restaurants.filter(restaurant => restaurant.info.avgRating > 4.0));
                     }}>
                         Get Top Restaurants
@@ -49,7 +50,7 @@ const Body = () => {
             </div>
 
 
-            <div className="card-container">
+            <div className="flex flex-wrap justify-center">
                 {filteredRestaurants.map(restaurant => {
                     return (
                         <Link to={"/restaurants/" + restaurant.info.id} key={restaurant.info.id}><Card key={restaurant.info.id} element={restaurant.info} /></Link>

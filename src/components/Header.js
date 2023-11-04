@@ -5,17 +5,16 @@ import useStatus from "../../utils/useStatus";
 
 
 const Header = () => {
-    { console.log("Hello from the header") }
     const [loginState, setLoginState] = useState("Login");
     const status = useStatus();
 
     return (
-        <div className="header">
+        <div className="flex justify-between bg-slate-100 items-center shadow-md">
             <div className="logoContainer">
-                <img src={logo} className="logo"></img>
+                <img src={logo} className="w-40 h-30"></img>
             </div>
-            <div className="navbar">
-                <ul className="navbar-list">
+            <div className="pr-10">
+                <ul className="flex space-x-8">
                     <li>Online Status: {status == "Online" ? "✅" : "❌"}</li>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About Us</Link></li>
