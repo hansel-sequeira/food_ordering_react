@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import Card from "./Card";
+import Card, { HigherOrderComponent } from "./Card";
 import ShimmerContent from "./ShimmerContent";
 import { Link } from "react-router-dom";
 
@@ -8,6 +8,7 @@ const Body = () => {
 
     const [restaurants, setElements] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const EnhancedCard = HigherOrderComponent();
     async function fetchData() {
         const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4510639&lng=78.3641341&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json = await response.json();
@@ -53,7 +54,9 @@ const Body = () => {
             <div className="flex flex-wrap justify-center">
                 {filteredRestaurants.map(restaurant => {
                     return (
-                        <Link to={"/restaurants/" + restaurant.info.id} key={restaurant.info.id}><Card key={restaurant.info.id} element={restaurant.info} /></Link>
+                        restaurant.info.loyaltyDiscoverPresentationInfo !== null ?
+                            <Link to={"/restaurants/" + restaurant.info.id} key={restaurant.info.id}><EnhancedCard element={restaurant.info} /></Link> :
+                            <Link to={"/restaurants/" + restaurant.info.id} key={restaurant.info.id}><Card element={restaurant.info} /></Link>
                     )
                 })}
             </div>

@@ -5,7 +5,6 @@ const useStatus = () => {
     const [status, setStatus] = useState("Online");
 
     useEffect(() => {
-        console.log("In use effect")
         window.addEventListener("online", (event) => {
             setStatus("Online");
         });

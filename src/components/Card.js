@@ -1,5 +1,20 @@
 import { BASE_URL } from "../../utils/constants";
 
+
+const enhancedCard = (props) => {
+    return (
+        <div>
+            <label className="relative bg-black text-white p-1 rounded-lg left-3 top-9">Promoted</label>
+            <Card element={props.element} />
+        </div>
+    )
+}
+
+export const HigherOrderComponent = () => {
+    return enhancedCard;
+}
+
+
 const Card = (props) => {
     const { name, avgRating, cuisines, sla, cloudinaryImageId } = props.element
     return (
