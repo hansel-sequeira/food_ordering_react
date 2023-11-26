@@ -2,8 +2,11 @@ import { useParams } from "react-router-dom";
 import ShimmerContent from "./ShimmerContent";
 import useRestaurantInfo from "../../utils/useRestaurantInfo";
 import RestaurantMenuDetail from "./RestaurantMenuDetail";
+import { useState } from "react";
 
 const RestaurantDetail = () => {
+
+    const [defaultExpandedIndex, setDefaultExpandedIndex] = useState(0);
 
     const { resId } = useParams();
 
@@ -30,9 +33,10 @@ const RestaurantDetail = () => {
             </div>
 
             <div className="w-8/12">
-                {categories.map(itemCategory => {
+                {categories.map((itemCategory, index) => {
                     return (
-                        <RestaurantMenuDetail key={itemCategory.card.card.title} elt={itemCategory} />
+                        <RestaurantMenuDetail key={itemCategory.card.card.title} elt={itemCategory} expandAccordion={index === defaultExpandedIndex}
+                            expandAccordionTrigger={setDefaultExpandedIndex} index={index} />
                     )
                 })}
             </div>

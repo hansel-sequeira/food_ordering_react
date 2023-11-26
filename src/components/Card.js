@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { BASE_URL } from "../../utils/constants";
+import UserContext from "../../utils/UserContext";
 
 
 const enhancedCard = (props) => {
@@ -16,6 +18,7 @@ export const HigherOrderComponent = () => {
 
 
 const Card = (props) => {
+    const { loggedInUser } = useContext(UserContext);
     const { name, avgRating, cuisines, sla, cloudinaryImageId } = props.element
     return (
         <div className="flex flex-col  bg-pink-200 w-80 m-5">
@@ -26,6 +29,7 @@ const Card = (props) => {
                 <h3>{cuisines.join(", ")}</h3>
                 <h4>{avgRating} stars</h4>
                 <h4>{sla.deliveryTime} mins away</h4>
+                <h5>{loggedInUser}</h5>
             </div>
         </div>
     )

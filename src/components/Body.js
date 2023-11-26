@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import React from "react";
 import Card, { HigherOrderComponent } from "./Card";
 import ShimmerContent from "./ShimmerContent";
 import { Link } from "react-router-dom";
+import UserContext from "../../utils/UserContext";
 
 const Body = () => {
 
     const [restaurants, setElements] = useState([]);
+    const { setUserNameUtility } = useContext(UserContext);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const EnhancedCard = HigherOrderComponent();
     async function fetchData() {
@@ -47,6 +49,14 @@ const Body = () => {
                     }}>
                         Get Top Restaurants
                     </button>
+                </div>
+
+
+                <div className="mr-3 mx-20">
+                    <label name="render_name">Render name: </label>
+                    <input className="border border-black px-2 py-1" name="render_name" onChange={(e) => {
+                        setUserNameUtility(e.target.value);
+                    }} />
                 </div>
             </div>
 

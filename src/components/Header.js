@@ -1,13 +1,20 @@
 import logo from "../../assets/logo.jpeg"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Link } from "react-router-dom";
 import useStatus from "../../utils/useStatus";
+import UserContext from "../../utils/UserContext";
+import { useSelector } from "react-redux";
+import store from "../../utils/appStore";
+
 
 
 const Header = () => {
     const [loginState, setLoginState] = useState("Login");
     const status = useStatus();
+    const { loggedInUser } = useContext(UserContext);
+    const cartData = useSelector(store => store.cart.cartItems);
 
+    console.log(cartData)
     return (
         <div className="flex justify-between bg-slate-100 items-center shadow-md">
             <div className="logoContainer">
@@ -19,12 +26,13 @@ const Header = () => {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
-                    <li>Cart</li>
+                    <li><Link to="/cart">Cart ({cartData.length})</Link></li>
                     <button className="login-btn" onClick={() => {
                         setLoginState(loginState === "Login" ? "Logout" : "Login");
                     }}>
                         {loginState}
                     </button>
+                    <li>{loggedInUser}</li>
                 </ul>
             </div>
         </div>
