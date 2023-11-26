@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const RestaurantDetail = () => {
 
-    const [defaultExpandedIndex, setDefaultExpandedIndex] = useState(0);
+    const [defaultExpandedIndex, setDefaultExpandedIndex] = useState(null);
 
     const { resId } = useParams();
 
@@ -32,11 +32,12 @@ const RestaurantDetail = () => {
                 <h5>{basicInfo.avgRatingString} stars | {basicInfo.totalRatingsString}</h5>
             </div>
 
-            <div className="w-8/12">
+            <div className="w-7/12">
+                {/* These are different components depending on the category, each with their own defaultExpandedIndex state */}
                 {categories.map((itemCategory, index) => {
                     return (
                         <RestaurantMenuDetail key={itemCategory.card.card.title} elt={itemCategory} expandAccordion={index === defaultExpandedIndex}
-                            expandAccordionTrigger={setDefaultExpandedIndex} index={index} />
+                            expandAccordionTrigger={setDefaultExpandedIndex} index={index} currentIndex={defaultExpandedIndex} />
                     )
                 })}
             </div>

@@ -11,10 +11,14 @@ const RestaurantMenuDetail = (props) => {
     const info = itemCategory.card.card;
     const title = info.title;
     const subCards = info.itemCards;
-    console.log("props: " + props.setDefaultExpandedIndex)
+    const currentIndex = props.currentIndex;
 
+
+    //if the current index === newIndex, then setDefault(null)
     const expandAccordionTrigger = () => {
-        setDefaultExpandedIndex(index);
+        if (currentIndex === index)
+            setDefaultExpandedIndex(null)
+        else setDefaultExpandedIndex(index);
     }
 
     const dispatch = useDispatch();
@@ -38,9 +42,9 @@ const RestaurantMenuDetail = (props) => {
                             <div className="my-2 font-light">{subCardItem.card.info.description}</div>
                         </div>
 
-                        <div className="w-4/12 flex flex-wrap justify-end">
+                        <div className="w-4/12 flex flex-wrap flex-col justify-end">
                             <img className="mt-2" src={RESTAURANT_MENU_IMAGE_URL + subCardItem.card.info.imageId}></img>
-                            <button className="bg-black text-white rounded-lg p-1 px-2 relative mx-auto bottom-3" onClick={() => addToCartStore(subCardItem)}>Add +</button>
+                            <button className="bg-black w-3/12 mx-auto text-white rounded-xl relative bottom-3" onClick={() => addToCartStore(subCardItem)}>Add +</button>
                         </div>
                     </div>
                 ))}
